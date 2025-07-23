@@ -57,33 +57,33 @@ class GalleryItem extends StatelessWidget {
               alignment: Alignment.topCenter,
             ),
           ),
-          child: ListTile(
-            tileColor: Color.fromARGB(200, 0, 0, 0),
-            title: Text(
-              imageTitle,
-              style: TextStyle(color: Colors.white, fontSize: 15),
-            ),
+          child: Stack(
+            children: [
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: null,
+                child: Container(
+                  color: Color.fromARGB(100, 0, 0, 0),
+                  child: ListTile(
+                    visualDensity: VisualDensity(
+                      vertical: -3, // bestimmt die Höhe der ListTile
+                    ),
+                    title: Text(
+                      imageTitle,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-
-        // child: Column(
-        //   children: [
-        //     Expanded(
-        //       child: Image.asset(imagePath, fit: BoxFit.fitWidth, scale: 1000),
-        //     ),
-        //     Positioned(
-        //       bottom: 0,
-        //       left: 0,
-        //       child: Padding(
-        //         padding: const EdgeInsets.all(8.0),
-        //         child: Text(
-        //           imageTitle,
-        //           style: Theme.of(context).textTheme.displaySmall,
-        //         ),
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ),
     );
   }
