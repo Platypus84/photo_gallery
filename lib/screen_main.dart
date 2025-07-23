@@ -22,7 +22,7 @@ class _MainScreenState extends State<MainScreen> {
       theme: ThemeData(
         textTheme: TextTheme(
           headlineMedium: TextStyle(
-            color: Color.fromRGBO(101, 5, 28, 1),
+            color: Color.fromARGB(255, 85, 97, 120),
             fontSize: 22,
             fontWeight: FontWeight.w600,
           ),
@@ -32,9 +32,9 @@ class _MainScreenState extends State<MainScreen> {
             fontWeight: FontWeight.w500,
           ),
           bodyMedium: TextStyle(
-            color: Color.fromRGBO(0, 0, 0, 1),
+            color: Color.fromARGB(255, 75, 75, 80),
             fontSize: 16,
-            fontWeight: FontWeight.normal,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
@@ -43,55 +43,68 @@ class _MainScreenState extends State<MainScreen> {
           title: Center(
             child: Text(
               screenTitles[currentIndex],
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
-          backgroundColor: Color.fromRGBO(101, 5, 28, 1),
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 85, 97, 120),
+                  Color.fromARGB(255, 155, 173, 220),
+                ],
+              ),
+            ),
+          ),
         ),
         body: screens[currentIndex],
-        bottomNavigationBar: NavigationBar(
-          backgroundColor: Color.fromRGBO(101, 5, 28, .25),
-          labelTextStyle: WidgetStateTextStyle.resolveWith((Set states) {
-            final Color color = states.contains(WidgetState.selected)
-                ? Color.fromRGBO(101, 5, 28, 1)
-                : Color.fromRGBO(101, 5, 28, 1);
-            return TextStyle(color: color);
-          }),
-          elevation: 0,
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 85, 97, 120),
+                Color.fromARGB(255, 155, 173, 220),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [0.0, 1.0],
+            ),
+            border: Border(top: BorderSide(color: Color(0xff80ACAF), width: 1)),
+          ),
 
-          indicatorColor: Color.fromRGBO(101, 5, 28, 1),
-          onDestinationSelected: (int index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          selectedIndex: currentIndex,
-          destinations: const <Widget>[
-            NavigationDestination(
-              icon: Icon(Icons.photo_album, color: Colors.white),
-              label: 'Galerie',
-            ),
-            // NavigationDestination(
-            //   icon: Badge(
-            //     label: Text('5'),
-            //     textColor: Color(0xff000000),
-            //     backgroundColor: Color.fromARGB(255, 255, 196, 0),
-            //     child: Icon(
-            //       Icons.newspaper,
-            //       color: Color.fromRGBO(33, 74, 44, 1),
-            //     ),
-            //   ),
-            //   label: 'News',
-            // ),
-            // NavigationDestination(
-            //   icon: Icon(Icons.favorite, color: Color.fromRGBO(33, 74, 44, 1)),
-            //   label: 'Likes',
-            // ),
-            NavigationDestination(
-              icon: Icon(Icons.person_2, color: Color.fromRGBO(101, 5, 28, 1)),
-              label: 'Über mich',
-            ),
-          ],
+          child: NavigationBar(
+            backgroundColor: Colors.transparent,
+            labelTextStyle: WidgetStateTextStyle.resolveWith((Set states) {
+              final Color color = states.contains(WidgetState.selected)
+                  ? Colors.white
+                  : Colors.white;
+              return TextStyle(color: color);
+            }),
+            elevation: 0,
+
+            indicatorColor: Color.fromARGB(255, 82, 92, 117),
+            onDestinationSelected: (int index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            selectedIndex: currentIndex,
+            destinations: const <Widget>[
+              NavigationDestination(
+                icon: Icon(Icons.photo_album, color: Colors.white),
+                label: 'Galerie',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.person_2, color: Colors.white),
+                label: 'Über mich',
+              ),
+            ],
+          ),
         ),
       ),
     );

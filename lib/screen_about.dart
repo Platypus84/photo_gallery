@@ -22,17 +22,23 @@ class AboutScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.all(24.0),
                   child: CircleAvatar(
-                    radius: 64,
-                    backgroundColor: const Color.fromARGB(255, 103, 11, 11),
+                    radius: 77,
+                    backgroundColor: Color.fromARGB(255, 155, 173, 220),
+
                     child: CircleAvatar(
-                      radius: 60.0,
+                      radius: 72.0,
                       backgroundImage: AssetImage('assets/images/kaya.jpeg'),
                     ),
                   ),
                 ),
               ],
             ),
-            Center(child: Text('Kaya Müller')),
+            Center(
+              child: Text(
+                'Kaya Müller',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),

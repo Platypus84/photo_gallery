@@ -19,11 +19,27 @@ class DetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        title: Text('Details', style: TextStyle(color: Colors.white)),
+        title: Text(
+          'Details',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        ),
         backgroundColor: Color.fromRGBO(101, 5, 28, 1),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 85, 97, 120),
+                Color.fromARGB(255, 155, 173, 220),
+              ],
+            ),
+          ),
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
+          //physics: const NeverScrollableScrollPhysics(),
           child: Column(
             children: [
               Image(image: AssetImage(imagePath)),

@@ -39,12 +39,6 @@ class GalleryItem extends StatelessWidget {
     return Card(
       clipBehavior: Clip.hardEdge,
       elevation: 3,
-      // child: Stack(
-      //   children: [
-      //     Expanded(child: Image.asset(imagePath, fit: BoxFit.fill)),
-      //     Positioned(bottom: 0, left: 0, child: Text(imageTitle)),
-      //   ],
-      // ),
       child: InkWell(
         onTap: () {
           Navigator.push(context, createRoute());
