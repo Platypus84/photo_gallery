@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/screen_about.dart';
-import 'package:photo_gallery/screen_gallery.dart';
+import 'package:photo_gallery/screens/screen_about.dart';
+import 'package:photo_gallery/screens/screen_gallery.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

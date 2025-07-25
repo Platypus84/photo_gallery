@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:photo_gallery/screen_details.dart';
+import 'package:photo_gallery/screens/screen_details.dart';
 
 class GalleryItem extends StatelessWidget {
   final String imageTitle;
