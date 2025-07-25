@@ -22,3 +22,7 @@ flutter:
   - assets/images/
   - assets/texts/
   - assets/
+  fonts:
+    - family: Rooster
+      fonts:
+        - asset: assets/fonts/rooster/rooster.ttf

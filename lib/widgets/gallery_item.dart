@@ -17,6 +17,7 @@ class GalleryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // eine Route zur Navigation erstellen:
     Route createRoute() {
       return PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => DetailsScreen(
@@ -28,11 +29,20 @@ class GalleryItem extends StatelessWidget {
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const begin = Offset(1.0, 0.0);
           const end = Offset.zero;
+
+          // Der Animation ein easeOutSine hinzufügen
+          final curvedAnimation = CurvedAnimation(
+            parent: animation,
+            curve: Curves.easeOutSine,
+          );
+
           final tween = Tween(begin: begin, end: end);
-          final offsetAnimation = animation.drive(tween);
+          final offsetAnimation = curvedAnimation.drive(tween);
 
           return SlideTransition(position: offsetAnimation, child: child);
         },
+        // Optional: Customize transition duration
+        transitionDuration: const Duration(milliseconds: 600),
       );
     }
 
@@ -66,11 +76,7 @@ class GalleryItem extends StatelessWidget {
                     ),
                     title: Text(
                       imageTitle,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                        height: 1,
-                      ),
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                 ),
