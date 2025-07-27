@@ -30,16 +30,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
           'Details',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
-        backgroundColor: Color.fromRGBO(101, 5, 28, 1),
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                Color.fromARGB(255, 85, 97, 120),
-                Color.fromARGB(255, 155, 173, 220),
-              ],
+              colors: [Color.fromARGB(255, 85, 97, 120), Color(0xff96A1B6)],
             ),
           ),
         ),
