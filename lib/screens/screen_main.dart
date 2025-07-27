@@ -14,8 +14,13 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   // Reminder: TickerProviderStateMixin wird für Animation (Page Transition) benötigt
   int _currentIndex = 0;
+  int _showPicsPerRow = 2;
 
-  final List<Widget> screens = [HomeScreen(), GalleryScreen(), AboutScreen()];
+  List<Widget> get screens => [
+    HomeScreen(),
+    GalleryScreen(picsPerRow: _showPicsPerRow),
+    AboutScreen(),
+  ];
   final List<String> screenTitles = ['Home', 'Meine Galerie', 'Über mich'];
 
   late AnimationController _animationController; // handelt die Animation
@@ -26,14 +31,14 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _animationController = AnimationController(
-      duration: Duration(seconds: 1), // 1 second fade duration
+      duration: Duration(seconds: 1), // 1 Sekunde Fade Dauer
       vsync: this,
     );
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(parent: _animationController, curve: Curves.easeInOut),
     );
 
-    // Start with the first page visible
+    // Nimm die erste sichtbare Seite
     _animationController.forward();
   }
 
@@ -68,6 +73,20 @@ class _MainScreenState extends State<MainScreen> with TickerProviderStateMixin {
             screenTitles[_currentIndex],
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
           ),
+          actions: [
+            // Grid Button nur in App Bar anzeigen, wenn der Screen die Gallery ist (index 1).
+            if (_currentIndex == 1)
+              IconButton(
+                onPressed: () {
+                  setState(() {
+                    _showPicsPerRow = _showPicsPerRow == 2
+                        ? 3
+                        : 2; // Ansicht zwischen 2 und 3 Bilder pro Zeile wechseln
+                  });
+                },
+                icon: Icon(Icons.grid_view_outlined, color: Colors.white),
+              ),
+          ],
           flexibleSpace: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(

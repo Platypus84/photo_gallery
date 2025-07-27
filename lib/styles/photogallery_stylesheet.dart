@@ -30,6 +30,18 @@ final ThemeData photoGalleryTheme = ThemeData(
       fontSize: 18,
       fontWeight: FontWeight.w500,
     ),
+    displayMedium: TextStyle(
+      color: Color(0xffeeeeee),
+      fontSize: 17,
+      fontWeight: FontWeight.w600,
+      shadows: [
+        Shadow(
+          blurRadius: 2.0,
+          color: const Color.fromARGB(255, 0, 0, 0),
+          offset: Offset(1.0, 1.0),
+        ),
+      ],
+    ),
     displaySmall: TextStyle(
       color: Color.fromRGBO(130, 130, 130, 1),
       fontSize: 14,

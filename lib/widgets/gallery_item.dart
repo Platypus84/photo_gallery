@@ -6,6 +6,7 @@ class GalleryItem extends StatelessWidget {
   final String imageDescription;
   final String imagePath;
   final String imageDate;
+  final int picsPerRow;
 
   const GalleryItem({
     super.key,
@@ -13,6 +14,7 @@ class GalleryItem extends StatelessWidget {
     required this.imageDescription,
     required this.imagePath,
     required this.imageDate,
+    required this.picsPerRow,
   });
 
   @override
@@ -41,7 +43,7 @@ class GalleryItem extends StatelessWidget {
 
           return SlideTransition(position: offsetAnimation, child: child);
         },
-        // Optional: Customize transition duration
+        // Die Transition Dauer einstellen
         transitionDuration: const Duration(milliseconds: 600),
       );
     }
@@ -63,24 +65,26 @@ class GalleryItem extends StatelessWidget {
           ),
           child: Stack(
             children: [
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: null,
-                child: Container(
-                  color: Color.fromARGB(100, 0, 0, 0),
-                  child: ListTile(
-                    visualDensity: VisualDensity(
-                      vertical: -3, // bestimmt die Höhe der ListTile
-                    ),
-                    title: Text(
-                      imageTitle,
-                      style: Theme.of(context).textTheme.titleSmall,
+              // Zeige Text Overlay nur, wenn picsPerRow is 2 (Gridview mit 2 Bildern pro Zeile)
+              if (picsPerRow == 2)
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: null,
+                  child: Container(
+                    color: Color.fromARGB(100, 0, 0, 0),
+                    child: ListTile(
+                      visualDensity: VisualDensity(
+                        vertical: -3, // bestimmt die Höhe der ListTile
+                      ),
+                      title: Text(
+                        imageTitle,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
                     ),
                   ),
                 ),
-              ),
             ],
           ),
         ),
