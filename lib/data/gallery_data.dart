@@ -1,5 +1,5 @@
-// Datei editiert: Klasse GalleryItemData erstellt sowie Listentyp GalleryItem durch GalleryItemData ersetzt, um picsPerRow verwenden zu können.
-// Ebenso werden in der Liste GalleryItemData nun wirklich nur noch Bildrohdaten und nicht mehr das GalleryItem selbst gespeichert.
+// Datei editiert: Klasse GalleryItemData wurde erstellt sowie ursprünglicher Listentyp <GalleryItem> der Liste galleryData durch <GalleryItemData> ersetzt, um picsPerRow verwenden zu können.
+// Ebenso werden nun in der Liste galerieData wirklich nur noch Bildrohdaten und nicht mehr das GalleryItem aus der Vorlage gespeichert.
 class GalleryItemData {
   final String imageTitle;
   final String imageDate;
